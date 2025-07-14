@@ -9,7 +9,11 @@ def check_if_exit(string):
     # returns true or false
     return string.strip().lower() == 'exit'
 def add_card():
-    while inputOn:
+    # Each question is the key.
+    # The value is a Flashcard object.
+    # This lets me access both the
+    # question and answer later.
+    while input_on:
         print("What's your question? ")
         question = input()
 
@@ -25,6 +29,7 @@ def add_card():
         new_card = Flashcard(question, answer)
         flashcards[question] = new_card
 
+
 print("""
 Welcome to Study Buddy!
 
@@ -34,9 +39,9 @@ anything you want:)
 """)
 flashcards = {}
 
-inputOn = True
+input_on = True
 
-print("Now you can add your question/answer pairs. If you're finished adding, just type EXIT")
+print("To start, just go ahead and add your question/answer pairs.\nIf you're finished adding, just type EXIT")
 
 add_card()
 
@@ -47,6 +52,7 @@ print("""Now that you have some flashcards, what would you like to do?
 2) Remove question
 3) View flashcards
 4) Quiz yourself!
+5) Quit
 
       """)
 option = int(input())
@@ -67,4 +73,5 @@ elif option == 2:
         print("That question doesn't exist! Make sure you typed it correctly.")
 
 #elif option == 3:
-
+#elif option == 4:
+elif option == 5:

@@ -5,9 +5,14 @@ class Flashcard:
     def __str__(self):
         return f'Q: {self.question}, A: {self.answer}'
 
+def show_cards():
+    for question in flashcards:
+        print(flashcards[question])
+
 def check_if_exit(string):
     # returns true or false
     return string.strip().lower() == 'exit'
+
 def add_card():
     # Each question is the key.
     # The value is a Flashcard object.
@@ -28,7 +33,6 @@ def add_card():
 
         new_card = Flashcard(question, answer)
         flashcards[question] = new_card
-
 
 print("""
 Welcome to Study Buddy!
@@ -72,6 +76,9 @@ elif option == 2:
     else:
         print("That question doesn't exist! Make sure you typed it correctly.")
 
-#elif option == 3:
+elif option == 3:
+    show_cards()
 #elif option == 4:
 elif option == 5:
+    print("Have a good rest of your day!")
+    exit()

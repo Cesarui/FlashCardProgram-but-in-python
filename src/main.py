@@ -61,26 +61,37 @@ print("""Now that you have some flashcards, what would you like to do?
 5) Quit
 
       """)
-option = int(input())
 
-if option == 1:
-    add_card()
+while input_on:
+    print("""What now?
 
-elif option == 2:
-    print("Which question do you want to remove? "
-          "\nKeep in mind that whatever question you remove, "
-          "\nit's answer will be removed as well!")
+    1) Add more flashcards
+    2) Remove question
+    3) View flashcards
+    4) Quiz yourself!
+    5) Quit
 
-    questionToRemove = input()
+          """)
+    option = int(input())
 
-    if questionToRemove in flashcards:
-        del flashcards[questionToRemove]
-    else:
-        print("That question doesn't exist! Make sure you typed it correctly.")
+    if option == 1:
+        add_card()
 
-elif option == 3:
-    show_cards()
-#elif option == 4:
-elif option == 5:
-    print("Have a good rest of your day!")
-    exit()
+    elif option == 2:
+        print("Which question do you want to remove? "
+            "\nKeep in mind that whatever question you remove, "
+            "\nit's answer will be removed as well!")
+
+        questionToRemove = input()
+
+        if questionToRemove in flashcards:
+            del flashcards[questionToRemove]
+        else:
+            print("That question doesn't exist! Make sure you typed it correctly.")
+
+    elif option == 3:
+        show_cards()
+    #elif option == 4:
+    elif option == 5:
+        print("Have a good rest of your day!")
+        exit()

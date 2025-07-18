@@ -1,3 +1,5 @@
+# FlashCard Project: I need to finish before Sunday!
+
 class Flashcard:
     def __init__(self, question, answer):
         self.question = question

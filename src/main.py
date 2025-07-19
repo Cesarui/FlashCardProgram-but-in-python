@@ -5,11 +5,11 @@ class Flashcard:
         self.question = question
         self.answer = answer
     def __str__(self):
-        return f'Q: {self.question}, A: {self.answer}'
+        return f'Q: {self.question}?, A: {self.answer}'
 
 def show_cards():
-    for question in flashcards:
-        print(flashcards[question])
+    for key in flashcards:
+        print(flashcards[key])
 
 def check_if_exit(string):
     # returns true or false
@@ -22,19 +22,19 @@ def add_card():
     # question and answer later.
     while input_on:
         print("What's your question? ")
-        question = input()
+        current_question = input()
 
-        if check_if_exit(question):
+        if check_if_exit(current_question):
             break
 
         print("What's your answer? ")
-        answer = input()
+        current_answer = input()
 
-        if check_if_exit(answer):
+        if check_if_exit(current_answer):
             break
 
-        new_card = Flashcard(question, answer)
-        flashcards[question] = new_card
+        new_card = Flashcard(current_question, current_answer)
+        flashcards[current_question] = new_card
 
 print("""
 Welcome to Study Buddy!
@@ -63,15 +63,7 @@ print("""Now that you have some flashcards, what would you like to do?
       """)
 
 while input_on:
-    print("""What now?
 
-    1) Add more flashcards
-    2) Remove question
-    3) View flashcards
-    4) Quiz yourself!
-    5) Quit
-
-          """)
     option = int(input())
 
     if option == 1:
@@ -91,7 +83,19 @@ while input_on:
 
     elif option == 3:
         show_cards()
-    #elif option == 4:
+    elif option == 4:
+        # Under Construction...
+        for quiz_key in flashcards:
+            print(flashcards[quiz_key].question)
     elif option == 5:
         print("Have a good rest of your day!")
         exit()
+
+    print("""What now?
+
+1) Add more flashcards
+2) Remove question
+3) View flashcards
+4) Quiz yourself!
+5) Quit
+              """)

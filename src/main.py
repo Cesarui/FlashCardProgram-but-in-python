@@ -5,7 +5,7 @@ class Flashcard:
         self.question = question
         self.answer = answer
     def __str__(self):
-        return f'Q: {self.question}?, A: {self.answer}'
+        return f'Q: {self.question.strip("?")}?, A: {self.answer}'
 
 def show_cards():
     for key in flashcards:
@@ -24,11 +24,19 @@ def add_card():
         print("What's your question? ")
         current_question = input()
 
+        while current_question.strip() == "":
+            print("Your question is empty...if you have no more questions\nto add, just type exit!")
+            current_question = input()
+
         if check_if_exit(current_question):
             break
 
         print("What's your answer? ")
         current_answer = input()
+
+        while current_answer.strip() == "":
+            print("Your answer is empty...please type something!")
+            current_answer = input()
 
         if check_if_exit(current_answer):
             break
@@ -84,14 +92,35 @@ while input_on:
     elif option == 3:
         show_cards()
     elif option == 4:
+        right_answers = 0
+        number_of_questions = len(flashcards)
+        question_answer = None
+
+        file = open('practice.txt', 'w')
+        file.write("Here are the questions you should practice: ")
         # Under Construction...
         for quiz_key in flashcards:
             print(flashcards[quiz_key].question)
+
+            question_answer = input()
+
+            if question_answer.lower().strip() == flashcards[quiz_key].answer.lower().strip():
+                right_answers += 1
+                print(f"Correct!!, the answer to '{flashcards[quiz_key].question}' was indeed '{flashcards[quiz_key].answer}'")
+
+            else:
+                print(f"Uhh ohh, the answer was actually {flashcards[quiz_key].answer.strip()}!")
+                file.write(f"{flashcards[quiz_key]}")
+
+        print(f"You got {right_answers}/{number_of_questions} right!")
+        file.close()
+
+
     elif option == 5:
-        print("Have a good rest of your day!")
+        print("Have a good rest of your day! Here are the questions you should practice!")
         exit()
 
-    print("""What now?
+    print("""\nWhat now?
 
 1) Add more flashcards
 2) Remove question

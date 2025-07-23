@@ -5,11 +5,9 @@ def show_cards():
     for key in flashcards:
         print(flashcards[key])
 
-
 def check_if_exit(string):
     # returns true or false
     return string.strip().lower() == 'exit'
-
 
 def remove_question():
     print("Which question do you want to remove? "
@@ -21,7 +19,6 @@ def remove_question():
         del flashcards[question_to_remove]
     else:
         print("That question doesn't exist! Make sure you typed it correctly.")
-
 
 def add_card():
     # Each question is the key.
@@ -51,7 +48,6 @@ def add_card():
 
         new_card = Flashcard(current_question, current_answer)
         flashcards[current_question] = new_card
-
 
 def quiz_mode():
     right_answers = 0

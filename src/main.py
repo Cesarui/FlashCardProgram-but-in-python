@@ -1,3 +1,4 @@
+import os
 from flashcard import Flashcard
 
 def show_cards():
@@ -58,7 +59,7 @@ def quiz_mode():
 
     file = open('practice.txt', 'w')
 
-    file.write("Here are the questions you should practice: ")
+    file.write("Here are the questions you should practice: \n")
 
     for quiz_key in flashcards:
         print(flashcards[quiz_key].question)
@@ -125,7 +126,8 @@ while input_on:
 
 
         elif option == 5:
-            print("Have a good rest of your day! \nPlease open the txt file to see the questions\n you need to practice:)!")
+            print("Have a good rest of your day! \nIf you got any questions wrong\na txt file will open and show you the questions\nyou need to practice:)!")
+            os.startfile("practice.txt")
             exit()
 
         print("""\nWhat now?
